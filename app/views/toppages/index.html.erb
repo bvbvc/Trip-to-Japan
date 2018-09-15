@@ -1,3 +1,8 @@
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+    <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+<% else %>
+
 <% content_for :cover do %>
   <div class="cover">
     <div class="cover-inner">
@@ -12,4 +17,8 @@
 <p>サイト紹介</p>
 <p>いいねランキング</p>
 <p>新着投稿</p>
+<% end %>
+
+
+
 
