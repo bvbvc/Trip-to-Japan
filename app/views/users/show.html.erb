@@ -9,10 +9,8 @@
     <li><a><%= @user.comment %></a></li>
     <li><a><%= @user.detail %></a></li>
      <li><a><%= image_tag @user.image.to_s %></a></li>
-      
-   
-    
-  </ul>
+      </ul>
   </div>
 </div>
-<%= link_to 'profile edit', edit_user_path(@user) %>
+
+ <%= link_to 'profile edit', edit_user_path(@user), class: 'btn btn-success btn-lg' %>
