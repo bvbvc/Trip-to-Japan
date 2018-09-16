@@ -2,7 +2,7 @@ Rails.application.routes.draw do
  root to: 'toppages#index'
  
   get 'signup', to: 'users#new'
-  resources :users, only: [:show, :new, :create]
+  resources :users
   
    get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
