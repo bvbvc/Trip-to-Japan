@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @posts = current_user.posts.all
   end
 
   def new
@@ -22,11 +23,13 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+#    @user = User.find(params[:id])
+    @user = current_user
   end
   
    def update
-    @user = User.find(params[:id])
+#    @user = User.find(params[:id])
+    @user = current_user
 
     if @user.update(user_params)
       flash[:success] = 'success'

@@ -1,4 +1,10 @@
 
+<div class="col-xs-2">
+  <div class="fit-img">
+<%= image_tag @user.image.to_s,class: "img-responsive img-circle" %>
+  </div>
+</div>
+<div class="col-md-12">
 <div class="panel panel-info">
   <div class="panel-heading">
   <h3 class="panel-title">profile</h3></h3>
@@ -8,9 +14,33 @@
     <li><a><%= @user.name %></a></li>
     <li><a><%= @user.comment %></a></li>
     <li><a><%= @user.detail %></a></li>
-     <li><a><%= image_tag @user.image.to_s %></a></li>
+     
       </ul>
   </div>
 </div>
 
+
+<% if @user == current_user %>
  <%= link_to 'profile edit', edit_user_path(@user), class: 'btn btn-success btn-lg' %>
+ 
+ <ul class="media-list">
+  <% @posts.each do |post| %>
+   
+      <div class="media-body">
+        <div>
+          <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted">posted at <%= post.created_at %></span>
+        </div>
+        <div>
+          <p><%= post.content %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  
+</ul>
+ 
+ 
+<% else %>
+  <%# フォローボタン表示 %>
+<% end %>
+</div>
