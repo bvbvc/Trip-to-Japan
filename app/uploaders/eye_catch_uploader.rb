@@ -1,4 +1,4 @@
-class ImagesUploader < CarrierWave::Uploader::Base
+class Eye_catchUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
  
  

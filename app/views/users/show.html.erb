@@ -23,18 +23,33 @@
 <% if @user == current_user %>
  <%= link_to 'profile edit', edit_user_path(@user), class: 'btn btn-success btn-lg' %>
  
+  <div class="cover-contents">
+        <h1>my post</h1>
+      </div>
+      
+      
+      <!--<ul class="nav nav-tabs">
+  <li class="active"><a href="#">収入</a></li>
+  <li><a href="#">支出</a></li>
+  <li><a href="#">合計</a></li>
+</ul>-->
+
+ 
  <ul class="media-list">
   <% @posts.each do |post| %>
    
       <div class="media-body">
+        <%= image_tag post.user.image.thumb.to_s,class: "img-responsive img-circle" %>
         <div>
           <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted">posted at <%= post.created_at %></span>
         </div>
         <div>
-          <p><%= post.content %></p>
+          <p><%= image_tag post.eye_catch.thumb.to_s,class: "img-responsive img-circle" %></p>
+          <%= post.title %>
         </div>
       </div>
     </li>
+    <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
   <% end %>
   
 </ul>
