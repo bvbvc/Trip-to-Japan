@@ -16,7 +16,7 @@
             
            
                 <li><%= link_to 'My profile', user_path(current_user) %></li>
-                 <li><a href="#">User</a></li>
+                <li ><%= link_to followings_user_path(current_user) do %>User<% end %></li>
                <li><%= link_to 'Post', new_post_path %></li>
                <li><a href="#">Search</a></li>
                

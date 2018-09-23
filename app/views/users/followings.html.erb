@@ -1,0 +1,23 @@
+
+<div class="col-xs-8">
+    <ul class="nav nav-tabs nav-justified">
+      
+      <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>Followings <span class="badge"><%= @count_followings %></span><% end %></li>
+      
+      
+      
+      <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>Followers <span class="badge"><%= @count_followers %></span><% end %></li>
+    </ul>
+ 
+ 
+ <p> 
+ 
+      <% @followings.each do |followings| %>
+  
+   <%= image_tag followings.image.thumb.to_s,class: "img-circle" %>
+    <%= link_to followings.name, user_path(followings) %><span>:</span>
+   <%= followings.comment %></p>
+  
+   <% end %>
+   
+  </div>

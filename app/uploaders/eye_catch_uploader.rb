@@ -9,9 +9,8 @@ class Eye_catchUploader < CarrierWave::Uploader::Base
   process :resize_to_limit => [300, 300]
 
 
-
-  version :thumb do
-    process :resize_to_limit => [100, 100]
+ version :thumb do
+    process :resize_to_fill => [50, 50]
   end
 
  

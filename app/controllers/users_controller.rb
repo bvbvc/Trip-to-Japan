@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = current_user.posts.all
+    @posts = @user.posts.all
+    
+   
   end
 
   def new
@@ -39,11 +41,28 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  
+  
+  
+  
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.page(params[:page])
+    counts(@user)
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.page(params[:page])
+    counts(@user)
+  end
 
   private
 
   def user_params
     params.require(:user).permit(:name, :e_mail, :password, :password_confirmation, :comment, :detail, :image)
   end
+  
+  
 end
 

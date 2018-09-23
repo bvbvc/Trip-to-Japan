@@ -33,6 +33,31 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
   
+  
+  
+  
+  
+ 
+  has_many :favorites,dependent: :destroy
+  has_many :likes, through: :favorites, source: :post
+  
+  
+  
+ def like(other_post)
+   self.favorites.find_or_create_by(post_id: other_post.id)
+  end
+    
+  def unlike(other_post)
+    favorite = self.favorites.find_by(post_id: other_post.id)
+    favorite.destroy if favorite 
+  end
+  
+  def like?(other_post)
+    self.likes.include?(other_post)
+  end
+  
+  
+  
 
      
    
