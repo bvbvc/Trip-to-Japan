@@ -1,7 +1,7 @@
-  <%= @post.user.name %>
+ <%= @post.user.name %>
  <%= @post.title %>
- <%= @post.category %>
- <%= @post.place %>
- <%= @post.content %>
- <span><%= render 'favorites/favorite_button', post: @post %></span>
+ <%= @post.category.family  %>
+ <%= @post.place.spot %>
+ <%== @post.content %>
+ <%= render 'favorites/favorite_button', post: @post %>
  
