@@ -2,6 +2,10 @@ class PostsController < ApplicationController
    before_action :correct_user, only: [:destroy]
     before_action :require_user_logged_in
   
+  def index
+    
+  end
+  
   def new
     @post = current_user.posts.build  
       
