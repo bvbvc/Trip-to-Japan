@@ -3,8 +3,57 @@ class PostsController < ApplicationController
     before_action :require_user_logged_in
   
   def index
+    @posts = Post.all
+    @search = Post.ransack(params[:q])  #追加
+    @result = @search.result           #追加
+    render :search_start
     
   end
+  
+  def search_start
+    #@posts  = Post.all
+    @posts = []
+    @search = Post.ransack(params[:q])  #追加
+    @result = @search.result
+    
+  end
+  
+  
+  def place_search
+    
+    ###
+    @place_id = params[:post][:place]
+
+    @posts  = Post.all
+    @search = Post.ransack(params[:q])  #追加
+
+
+    @result = Post.where(place_id: @place_id)
+    render :search_start
+    
+    
+    
+  end
+  
+   def category_search
+ 
+    
+    ###
+    @category_id = params[:post][:category]
+
+    @posts  = Post.all
+    @search = Post.ransack(params[:q])  #追加
+
+
+    @result = Post.where(category_id: @category_id)
+    render :search_start
+    
+    
+    
+  end
+  
+  
+  
   
   def new
     @post = current_user.posts.build  

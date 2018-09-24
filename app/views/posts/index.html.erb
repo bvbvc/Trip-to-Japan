@@ -1,0 +1,25 @@
+<%= search_form_for @search  do |f| %>
+  <div class="form-group">
+    <%= f.label :title_or_content_cont, "title or content" %>
+    <%= f.text_field :title_or_content_cont, class: "form-control" %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
+<%= form_for(:post, url:place_search_path) do |f| %>
+
+   <%= f.collection_select(:place, Place.all, :id, :spot, selected:@place_id) %>
+
+   <%= f.submit("Place Search") %>
+<% end %>
+
+
+
+<% @result.each do |post| %>
+  <p>
+   <span><%= image_tag post.user.image.thumb.to_s,class: "img-circle" %></span>
+   <span><%= link_to post.user.name, user_path(post.user) %></span> <span class="text-muted">posted at <%= post.created_at %></span>
+   <span><%= image_tag post.eye_catch.thumb.to_s %></span>
+   <span><%= link_to post.title, post_path(post.id) %></span>
+  </p>
+<% end %>
