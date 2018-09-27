@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'place_search', to: 'posts#place_search'
   post 'category_search', to: 'posts#category_search'
   get 'search_start', to: 'posts#search_start'
+  get 'rankings/favorite', to: 'rankings#favorite'
    
    
    resources :relationships, only: [:create, :destroy]

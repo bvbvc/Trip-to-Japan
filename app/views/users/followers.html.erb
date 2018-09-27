@@ -5,7 +5,7 @@
       <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>Followers <span class="badge"><%= @count_followers %></span><% end %></li>
     </ul>
   <% @followers.each do |followers| %>
-  <p><%= image_tag followers.image.thumb.to_s,class: "img-circle" %> 
+  <p>・<%= image_tag followers.image.thumb.to_s,class: "img-circle" %> 
    <%= link_to followers.name, user_path(followers) %><span>:</span>
     <%= followers.comment %></p> 
     

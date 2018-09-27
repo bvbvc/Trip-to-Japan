@@ -10,4 +10,8 @@ class Post < ApplicationRecord
   
   has_many :favorites,dependent: :destroy
   has_many :liked, through: :favorites, source: :user
+  
+   def self.ranking
+    self.group(:id).order('count_id DESC').limit(10).count(:id)
+  end
 end

@@ -8,9 +8,13 @@
     </div>
   </div>
 <% end %>
-<p>いいねランキング</p>
-<p>新着投稿</p>
-    
+<h2>Your following' new post</h2>
+ <% @posts.each do |post| %>
+ <p>・
+ <span><%= image_tag post.user.image.thumb.to_s,class: "img-circle" %></span>
+ <span><%= link_to post.user.name, user_path(post.user) %></span> <span class="text-muted"><%= post.created_at %></span>
+ <span><%= image_tag post.eye_catch.thumb.to_s %></span>
+ <span><%= link_to post.title, post_path(post.id) %></span><% end %>
 <% else %>
 
 <% content_for :cover do %>
@@ -24,9 +28,8 @@
   </div>
 <% end %>
 
-<p>サイト紹介</p>
-<p>いいねランキング</p>
-<p>新着投稿</p>
+<h2>Welcome to "Trip to Japan"!</h2>
+<p>You can share your experiences in Japan.</p>
 <% end %>
  
 

@@ -1,0 +1,11 @@
+
+<h1>Like Ranking</h1>
+<% if @posts.present? %>
+<% @posts.each_with_index do |post, index| %>
+<p><span><%= index+1 %>位: <%= @ranking_counts[post.id] %> Likes:</span>
+<span><%= image_tag post.user.image.thumb.to_s,class: "img-circle" %></span>
+<span><%= link_to post.user.name, user_path(post.user) %></span>
+<span><%= image_tag post.eye_catch.thumb.to_s %></span>
+<span><%= link_to post.title, post_path(post.id) %></span></p>
+<% end %>
+<% end %>

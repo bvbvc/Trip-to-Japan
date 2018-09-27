@@ -69,18 +69,18 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = '投稿しました。'
+      flash[:success] = 'success'
       redirect_to user_path(current_user)
     else
-      @posts = current_user.posts.order('created_at DESC').page(params[:page])
-      flash.now[:danger] = '投稿に失敗しました。'
+      @posts = current_user.feed_posts.order('created_at DESC').page(params[:page])
+      flash.now[:danger] = 'fail'
     redirect_to new_post_path
     end
   end
 
  def destroy
     @post.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:success] = 'success'
     redirect_back(fallback_location: root_path)
   end
 

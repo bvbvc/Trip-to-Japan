@@ -37,12 +37,15 @@
 
 
  <% @posts.each do |post| %>
- <p>
+ <p>・
  <span><%= image_tag post.user.image.thumb.to_s,class: "img-circle" %></span>
- <span><%= link_to post.user.name, user_path(post.user) %></span> <span class="text-muted">posted at <%= post.created_at %></span>
+ <span><%= link_to post.user.name, user_path(post.user) %></span> <span class="text-muted"><%= post.created_at %></span>
  <span><%= image_tag post.eye_catch.thumb.to_s %></span>
  <span><%= link_to post.title, post_path(post.id) %></span>
- <span><%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %></span><% end %>
+<% if @user == current_user %> 
+ <span><%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %></span>
+ <% end %>
+ <% end %>
   
  
  </p>
