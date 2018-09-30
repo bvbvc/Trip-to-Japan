@@ -63,5 +63,4 @@ group :production do
     
   gem 'cloudinary'
   
-  gem 'heroku'  
 end
