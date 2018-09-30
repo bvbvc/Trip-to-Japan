@@ -8,12 +8,19 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
-  if Rails.env == 'development'
+  
     storage :file
   # storage :fog
-  else
-    include Cloudinary::CarrierWave
+ 
+  # Override the directory where uploaded files will be stored.
+  # This is a sensible default for uploaders that are meant to be mounted:
+  def store_dir
+    "uploads/ckeditor/pictures/#{model.id}"
   end
+
+    storage :file
+  # storage :fog
+ 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
