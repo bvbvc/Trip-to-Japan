@@ -6,7 +6,7 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
    include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   # include CarrierWave::ImageScience
-
+include Cloudinary::CarrierWave
   # Choose what kind of storage to use for this uploader:
  if Rails.env == 'development'
    storage :file
