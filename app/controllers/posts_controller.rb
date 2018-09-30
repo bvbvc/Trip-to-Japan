@@ -2,19 +2,24 @@ class PostsController < ApplicationController
    before_action :correct_user, only: [:destroy]
     before_action :require_user_logged_in
   
-  def index
+   def index
     @posts = Post.all
     @search = Post.ransack(params[:q])  #追加
     @result = @search.result           #追加
     render :search_start
     
   end
-  
   def search_start
     #@posts  = Post.all
     @posts = []
     @search = Post.ransack(params[:q])  #追加
-    @result = @search.result
+
+    if (params[:q] != nil)
+      @result = @search.result
+    else 
+      @result = []
+    end
+    
     
   end
   

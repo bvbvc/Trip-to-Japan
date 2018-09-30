@@ -36,24 +36,41 @@
 </div>
 
 
- <% @posts.each do |post| %>
- <p>・
- <span><%= image_tag post.user.image.thumb.to_s,class: "img-circle" %></span>
- <span><%= link_to post.user.name, user_path(post.user) %></span> <span class="text-muted"><%= post.created_at %></span>
- <span><%= image_tag post.eye_catch.thumb.to_s %></span>
- <span><%= link_to post.title, post_path(post.id) %></span>
-<% if @user == current_user %> 
- <span><%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %></span>
- <% end %>
- <% end %>
-  
+
+
+
+
+
+
+ <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th>eye_catch</th>
+        <th>title</th>
+        <th><% if @user == current_user %>delete<% end %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= image_tag post.user.image.thumb.to_s,class: "img-circle" %></td>
+          <td><%= link_to post.user.name, user_path(post.user) %></td>
+          <td><%= image_tag post.eye_catch.thumb.to_s %><span class="text-muted"><%= post.created_at %></td>
+          <td><%= link_to post.title, post_path(post.id) %></td>
+          <td><% if @user == current_user %> <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %> <% end %></td>
+          <% end %>
+        </tr>
+    </tbody>
+  </table>
  
- </p>
+
       
          
      
     
-</div>
+
 
 
 

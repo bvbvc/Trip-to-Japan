@@ -4,12 +4,23 @@
       <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>Followings <span class="badge"><%= @count_followings %></span><% end %></li>
       <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>Followers <span class="badge"><%= @count_followers %></span><% end %></li>
     </ul>
-  <% @followers.each do |followers| %>
-  <p>・<%= image_tag followers.image.thumb.to_s,class: "img-circle" %> 
-   <%= link_to followers.name, user_path(followers) %><span>:</span>
-    <%= followers.comment %></p> 
-    
-   <% end %>
+ <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th>comment</th>
+      </tr>
+    </thead>
+    <tbody>
+     <% @followers.each do |followings| %>
+        <tr>
+          <td><%= image_tag followings.image.thumb.to_s,class: "img-circle" %> </td>
+          <td><%= link_to followings.name, user_path(followings) %></td>
+          <td><%= followings.comment %></td><% end %>
+        </tr>
+    </tbody>
+  </table>
 </div>
 
 

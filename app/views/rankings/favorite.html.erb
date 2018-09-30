@@ -1,11 +1,35 @@
 
 <h1>Like Ranking</h1>
+
+
+
+
 <% if @posts.present? %>
-<% @posts.each_with_index do |post, index| %>
-<p><span><%= index+1 %>位: <%= @ranking_counts[post.id] %> Likes:</span>
-<span><%= image_tag post.user.image.thumb.to_s,class: "img-circle" %></span>
-<span><%= link_to post.user.name, user_path(post.user) %></span>
-<span><%= image_tag post.eye_catch.thumb.to_s %></span>
-<span><%= link_to post.title, post_path(post.id) %></span></p>
-<% end %>
-<% end %>
+ <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Likes</th>
+        <th>image</th>
+        <th>name</th>
+        <th>eye_catch</th>
+        <th>title</th>
+      </tr>
+    </thead>
+    <tbody>
+     <% @posts.each_with_index do |post, index| %>
+        <tr>
+          <td> <%= @ranking_counts[post.id] %> Likes</td>
+          <td><%= image_tag post.user.image.thumb.to_s,class: "img-circle" %></td>
+          <td><%= link_to post.user.name, user_path(post.user) %></td>
+          <td><%= image_tag post.eye_catch.thumb.to_s %><span class="text-muted"><%= post.created_at %></td>
+          <td><%= link_to post.title, post_path(post.id) %></td>
+          <% end %>
+        </tr>
+    </tbody>
+  </table>
+  <%end%>
+
+
+
+
+

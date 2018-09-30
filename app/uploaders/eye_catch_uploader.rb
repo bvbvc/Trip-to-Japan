@@ -17,7 +17,12 @@ class Eye_catchUploader < CarrierWave::Uploader::Base
   
   
   # Choose what kind of storage to use for this uploader:
-  storage :file
+   if Rails.env == 'development'
+    storage :file
+  # storage :fog
+  else
+    include Cloudinary::CarrierWave
+  end
   # storage :fog
 
   # Override the directory where uploaded files will be stored.

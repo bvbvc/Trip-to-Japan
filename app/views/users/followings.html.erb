@@ -10,14 +10,23 @@
     </ul>
  
  
- <p> ・
- 
-      <% @followings.each do |followings| %>
-  
-   <%= image_tag followings.image.thumb.to_s,class: "img-circle" %>
-    <%= link_to followings.name, user_path(followings) %><span>:</span>
-   <%= followings.comment %></p>
-  
-   <% end %>
-   
+
   </div>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th>comment</th>
+      </tr>
+    </thead>
+    <tbody>
+     <% @followings.each do |followings| %>
+        <tr>
+          <td><%= image_tag followings.image.thumb.to_s,class: "img-circle" %> </td>
+          <td><%= link_to followings.name, user_path(followings) %></td>
+          <td><%= followings.comment %></td><% end %>
+        </tr>
+    </tbody>
+  </table>

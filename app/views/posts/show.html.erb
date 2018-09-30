@@ -1,7 +1,16 @@
- <%= @post.user.name %>
- <%= @post.title %>
- <%= @post.category.family  %>
- <%= @post.place.spot %>
- <%== @post.content %>
+
+ 
+ <div class="col-md-12">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Title:<%= @post.title %> Writer: <%= @post.user.name %> #<%= @post.category.family  %> #<%= @post.place.spot %></h3>
+     </div>
+      <div class="panel-body">
+       <ul class="list-unstyled">
+            <li><a><%== @post.content %></a></li>
+           
+       </ul>
+  </div>
+</div>
  <%= render 'favorites/favorite_button', post: @post %>
  

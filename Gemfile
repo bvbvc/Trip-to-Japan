@@ -60,4 +60,8 @@ gem 'ckeditor'
 gem 'ransack'
 group :production do
   gem 'pg', '0.21.0'
+    
+  gem 'cloudinary'
+  
+  gem 'heroku'  
 end
