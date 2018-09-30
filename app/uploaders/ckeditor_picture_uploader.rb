@@ -3,29 +3,18 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   include Ckeditor::Backend::CarrierWave
   include Cloudinary::CarrierWave
   # Include RMagick or ImageScience support:
-   include CarrierWave::RMagick
+  # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
-
-   #storage :file
- # storage :fog
+  # storage :file
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/ckeditor/pictures/#{model.id}"
-  end
-
-    storage :file
-  # storage :fog
- 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/ckeditor/pictures/#{model.id}"
-  end
+  # def store_dir
+  #   "uploads/ckeditor/pictures/#{model.id}"
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -38,13 +27,14 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+
   [:extract_content_type, :extract_size, :extract_dimensions].each do |method|
-  define_method :"#{method}_with_cloudinary" do
-    send(:"#{method}_without_cloudinary") if self.file.is_a?(CarrierWave::SanitizedFile)
-    {}
+    define_method :"#{method}_with_cloudinary" do
+      send(:"#{method}_without_cloudinary") if self.file.is_a?(CarrierWave::SanitizedFile)
+      {}
+    end
+    alias_method_chain method, :cloudinary
   end
-  alias_method_chain method, :cloudinary
-end
 
   process :extract_dimensions
 
