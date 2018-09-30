@@ -1,7 +1,7 @@
 # encoding: utf-8
 class CkeditorPictureUploader < CarrierWave::Uploader::Base
   include Ckeditor::Backend::CarrierWave
-  include Cloudinary::CarrierWave
+ 
   # Include RMagick or ImageScience support:
    include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -18,8 +18,13 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
     "uploads/ckeditor/pictures/#{model.id}"
   end
 
+   # Choose what kind of storage to use for this uploader:
+   if Rails.env == 'development'
     storage :file
   # storage :fog
+  else
+    include Cloudinary::CarrierWave
+  end
  
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
