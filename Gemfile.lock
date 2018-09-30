@@ -73,7 +73,6 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    heroku (3.99.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.1.0)
@@ -219,7 +218,6 @@ DEPENDENCIES
   ckeditor
   cloudinary
   coffee-rails (~> 4.2)
-  heroku
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
